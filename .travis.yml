@@ -1,6 +1,9 @@
-language: ruby
-cache: bundler
+language: sh
+cache:
+  directories:
+  - .autoconf
 before_install:
+  - echo hello > .autoconf
   - echo $TRAVIS_COMMIT
   - echo $TRAVIS_TAG
   - echo $TRAVIS_BRANCH
