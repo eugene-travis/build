@@ -1,7 +1,9 @@
 language: sh
+before_cache:
+  - echo hello > $HOME/.autoconf
 cache:
   directories:
-  - .autoconf
+  - $HOME/.autoconf
 before_install:
   - echo hello > .autoconf
   - echo $TRAVIS_COMMIT
