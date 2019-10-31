@@ -1,13 +1,29 @@
-language: sh
-before_cache:
-  - echo hello > $HOME/.autoconf
-cache:
-  directories:
-  - $HOME
-before_install:
-  - echo hello > .autoconf
-  - echo $TRAVIS_COMMIT
-  - echo $TRAVIS_TAG
-  - echo $TRAVIS_BRANCH
-  - echo $TRAVIS_BUILD_NUMBER
-  - echo $TRAVIS_REPO_SLUG
+env:
+  global:
+    - S1=true
+    - S2=false
+    - S3=true
+    - S4=false
+    - S5=true
+    
+jobs:
+  include:
+    - stage: "STAGE 1"
+      name: "STAGE 1 NAME"
+      script: echo "STAGE 1 COMMAND"
+    - stage: "STAGE 2"
+      name: "STAGE 2 NAME"
+      script: echo "STAGE 2 COMMAND"
+    - stage: "STAGE 3"
+      name: "STAGE 3 NAME"
+      script: echo "STAGE 3 COMMAND"
+      if: env(S3) = true
+    - stage: "STAGE 4"
+      name: "STAGE 4 NAME"
+      script: echo "STAGE 4 COMMAND"
+      if: env(S4) = true
+    - stage: "STAGE 5"
+      name: "STAGE 5 NAME"
+      script: echo "STAGE 5 COMMAND"
+      if: env(TRAVIS_BRANCH) =~ /^mas/
+      
