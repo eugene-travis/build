@@ -27,5 +27,5 @@ jobs:
     - stage: "STAGE 5"
       name: "STAGE 5 NAME"
       script: echo "STAGE 5 COMMAND"
-      if: env(TRAVIS_BRANCH) =~ /^mas/
+      if: branch =~ /^master$/
       
